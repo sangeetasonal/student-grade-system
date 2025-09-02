@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import dotenv from "dotenv";
 import { connectDB } from "./src/config/db.js";
 import uploadsRoute from "./src/routes/uploads.js";
@@ -7,6 +8,13 @@ import studentsRoute from "./src/routes/students.js";
 dotenv.config();
 
 const app = express();
+
+// Enable CORS for your deployed frontend
+app.use(cors({
+  origin: process.env.CORS_ORIGIN?.split(",") || "*",
+}));
+
+app.use(express.json({ limit: "1mb" }));
 
 // Routes
 app.get("/", (_req, res) => res.send("✅ Student Grade API is running"));
