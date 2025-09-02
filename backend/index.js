@@ -9,12 +9,11 @@ dotenv.config();
 
 const app = express();
 
-// Allow only your deployed frontend (Vercel)
-const allowedOrigin = process.env.CORS_ORIGIN;
 
 app.use(cors({
-  origin: allowedOrigin,
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  origin: "https://student-grade-system-two.vercel.app",
+  methods: ["GET","POST","PUT","DELETE","OPTIONS"],
+  credentials: true,
 }));
 
 // Body parser
