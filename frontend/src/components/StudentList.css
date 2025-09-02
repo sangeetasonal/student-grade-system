@@ -1,0 +1,77 @@
+.table-container {
+  background: #fefefe;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  margin: 20px auto;
+  overflow-x: auto;
+}
+
+.table-container h2 {
+  text-align: center;
+  color: #4a148c;
+  margin-bottom: 15px;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.table-container table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.table-container th,
+.table-container td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: center;
+}
+
+.table-container th {
+  background-color: #4a148c;
+  color: #fff;
+  font-size: 16px;
+}
+
+.table-container tr:nth-child(even) {
+  background-color: #f3e5f5;
+}
+
+.table-container tr:hover {
+  background-color: #e1bee7;
+}
+
+.pagination {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.pagination button {
+  padding: 8px 15px;
+  border-radius: 8px;
+  border: none;
+  background-color: #4a148c;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination button:hover:not(:disabled) {
+  background-color: #6a1b9a;
+}
+
+.loading {
+  text-align: center;
+  font-weight: bold;
+  color: #4a148c;
+}

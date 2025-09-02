@@ -1,0 +1,47 @@
+/* Container for the whole app */
+.app-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background: #f3e5f5; /* light gradient background */
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* Main header */
+.app-container h1 {
+  color: #4a148c;
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+/* Make FileUpload and StudentList appear as cards */
+.upload-container,
+.table-container {
+  width: 90%;
+  max-width: 900px;
+  margin-bottom: 30px;
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+}
+
+.upload-container:hover,
+.table-container:hover {
+  transform: translateY(-5px);
+}
+
+/* Make all headings inside cards consistent */
+.upload-container h2,
+.table-container h2 {
+  color: #6a1b9a;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
