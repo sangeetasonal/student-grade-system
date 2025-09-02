@@ -9,19 +9,12 @@ dotenv.config();
 
 const app = express();
 
-// Simple CORS setup
-const allowedOrigins = [process.env.CORS_ORIGIN];
+// Allow only your deployed frontend (Vercel)
+const allowedOrigin = process.env.CORS_ORIGIN;
 
 app.use(cors({
-  origin: function(origin, callback) {
-    // allow requests with no origin (Postman) or from your frontend
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  credentials: true
+  origin: allowedOrigin,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
 }));
 
 // Body parser
@@ -29,7 +22,6 @@ app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true }));
 
 // Routes
-app.get("/", (_req, res) => res.send("✅ Student Grade API is running"));
 app.use("/api/uploads", uploadsRoute);
 app.use("/api/students", studentsRoute);
 
