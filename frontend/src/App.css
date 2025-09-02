@@ -22,7 +22,6 @@
 .upload-container,
 .table-container {
   width: 90%;
-  max-width: 900px;
   margin-bottom: 30px;
   background: white;
   border-radius: 15px;
