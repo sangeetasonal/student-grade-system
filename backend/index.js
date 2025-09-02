@@ -9,10 +9,18 @@ dotenv.config();
 
 const app = express();
 
-// Enable CORS for your deployed frontend
+// Simple CORS setup
+const allowedOrigins = [process.env.CORS_ORIGIN];
+
 app.use(cors({
-  origin: process.env.CORS_ORIGIN?.split(",") || "*",
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  origin: function(origin, callback) {
+    // allow requests with no origin (Postman) or from your frontend
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true
 }));
 
@@ -28,10 +36,9 @@ app.use("/api/students", studentsRoute);
 // 404 handler
 app.use((req, res) => res.status(404).json({ error: "Not found" }));
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5000;
 const MONGO_URI = process.env.MONGO_URI;
 
-// Connect to DB & start server
 connectDB(MONGO_URI).then(() => {
   app.listen(PORT, () => console.log(`🚀 Server listening on :${PORT}`));
 });
